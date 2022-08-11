@@ -43,7 +43,6 @@ const Sign_up = () => {
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
                             />
-                            <br/>
                             <p>
                                 <label>비밀번호</label>
                             </p>
