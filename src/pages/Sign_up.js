@@ -5,16 +5,12 @@ import styles from './Sign.module.css';
 const Sign_up = () => {
     const [clicked, setClicked] = useState(false);
     //false = bars, true = times
-    const handleClick = () => {
-        setClicked(!clicked);
-    }
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [name, setName] = useState('izony');
+    const [name, setName] = useState('');
 
     const handleSubmit = (e) => {
-        e.preventDefault();
         const member = { username, password, name };
 
         fetch('http://localhost:8080/student/signup', {
@@ -25,6 +21,36 @@ const Sign_up = () => {
         .then(() => {
             console.log('회원가입 완료');
         })
+    };
+    function handleClick() {
+        setClicked(!clicked);
+        let errors = {};
+        
+        //정규식 표현
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+        
+        //이메일 값이 없을시
+        if (!username) {
+          errors.username = "Cannot be blank";
+          //이메일 정규식 표현이 옳지 않을시
+        } else if (!regex.test(username)) {
+          errors.username = "Invalid email format";
+        }
+        
+        //비밀번호 값이 없을시
+        if (!password) {
+          errors.password = "Cannot be blank";
+          //비밀번호의 길이(length)가 4글자 이하일 때
+        } else if (password.length < 4) {
+          errors.password = "Password must be more than 4 characters";
+        }
+        if(errors.username != undefined){
+            alert(errors.username);
+        }
+        else if(errors.password != undefined){
+            alert(errors.password);
+        }
+        window.location.href = './sign_up/validation';
     }
 
     return (
@@ -47,7 +73,7 @@ const Sign_up = () => {
                                 <label>비밀번호</label>
                             </p>
                             <input 
-                                type="text" 
+                                type="password" 
                                 required
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
@@ -64,7 +90,9 @@ const Sign_up = () => {
                             <br/>
                             <br/>
                             <br/>
-                            {<button className={styles.button_background}>회원가입</button>}
+                            <button className={styles.button_background} onClick={handleClick}>
+                                회원가입
+                            </button>
                         </form>
                     </body>
                 </div>
