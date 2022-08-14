@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-
+import { Link, useNavigate } from 'react-router-dom'
 import styles from './Sign.module.css';
 
 const Sign_up = () => {
@@ -11,19 +11,9 @@ const Sign_up = () => {
     const [name, setName] = useState('');
 
     const handleSubmit = (e) => {
+        e.preventDefault();
         const member = { username, password, name };
 
-        fetch('http://localhost:8080/student/signup', {
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(member)
-        })
-        .then(() => {
-            console.log('회원가입 완료');
-        })
-    };
-    function handleClick() {
-        setClicked(!clicked);
         let errors = {};
         
         //정규식 표현
@@ -50,8 +40,20 @@ const Sign_up = () => {
         else if(errors.password != undefined){
             alert(errors.password);
         }
-        window.location.href = './sign_up/validation';
-    }
+        else {
+            window.location.href = './sign_up/validation';
+            setClicked(!clicked);
+            
+            fetch('http://localhost:8080/student/signup', {
+                method: 'POST',
+                headers: { "Content-Type" : "application/json" },
+                body: JSON.stringify(member)
+            })
+            .then(() => {
+                console.log('회원가입 완료');
+            })
+        }
+    };
 
     return (
         <div className={styles.content}>
@@ -90,7 +92,7 @@ const Sign_up = () => {
                             <br/>
                             <br/>
                             <br/>
-                            <button className={styles.button_background} onClick={handleClick}>
+                            <button type='submit' className={styles.button_background}>
                                 회원가입
                             </button>
                         </form>
