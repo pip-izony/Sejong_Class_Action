@@ -46,3 +46,10 @@ h2 {
     height: 100vh;
     background: #eeeeee;
 }
+.input_valid {
+    height: 40px;
+    width: 65%;
+    border: solid 2px #e8e8e8; 
+    border-radius: 8px;
+    text-align: left;
+}
