@@ -1,4 +1,4 @@
-.body {
+body {
     /* The image used */
     background-image: url("../img/main_background.jpg");
   
@@ -8,7 +8,7 @@
     /* Center and scale the image nicely */
     overflow: auto;
 
-    background-position: 30% 0%;
+    background-position: 0% 0%;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -30,12 +30,13 @@ footer {
     font-size: 11px;
     background-color: #383838e2;
 }
-footer p {
-    margin-top: 0; margin-bottom: 0;   
+p {
+    margin-top: 0; 
+    margin-bottom: 0;   
 }
 
-footer p span {
+span {
     display: inline-block;
-    margin-left: 20px;
+    margin-left: 0px;
 }
   
