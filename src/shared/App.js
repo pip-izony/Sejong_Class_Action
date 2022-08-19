@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Home, About, Sign_in, Sign_up, Validation} from '../pages';
+import PrivateRoute from '../components/PrivateRoute';
+import PublicRoute from '../components/PublicRoute';
 
 
 const App = () => {
