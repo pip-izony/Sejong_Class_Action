@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 
 import styles from './Sign.module.css';
+import { signIn } from '../components/Auth.js';
 
 const Sign_in = () => {
     const [clicked, setClicked] = useState(false);
@@ -11,7 +12,7 @@ const Sign_in = () => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [name, setName] = useState('izony');
+    const [name, setName] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
