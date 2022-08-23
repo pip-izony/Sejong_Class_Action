@@ -17,13 +17,11 @@ const App = () => {
         <Route path="/about" element={<About />}/>
         <Route path="/sign_in" element={<Sign_in />}/>
         <Route path="/sign_up" element={<Sign_up />}/>
-        <Route>
-          <AuthRoute
-            authenticated={authenticated}
-            path="/sign_up/validation"
-            render={props => <Profile user={user} {...props} />}
-          />
-        </Route>
+        <AuthRoute
+          authenticated={authenticated}
+          path="/sign_up/validation"
+          render={props => <Validation user={user} {...props} />}
+        />
       </Routes>
       </div>
     );
