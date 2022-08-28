@@ -5,6 +5,7 @@ import { Home, About, Sign_in, Sign_up, Validation} from '../pages';
 const App = () => {
   const [user, setUser] = useState(null);
   const authenticated = false;
+//user != null
 
   //const login = ({ email, password }) => setUser(signIn({ email, password }));
   //const logout = () => setUser(null);
