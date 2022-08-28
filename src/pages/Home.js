@@ -5,8 +5,6 @@ import home_style from './Home.module.css';
 import main_logo from '../img/main_logo.png';
 import { MenuItems } from "../components/navbar/MenuItems";
 
-import Button from '../components/Button'
-
 const Home = () => {
     const [clicked, setClicked] = useState(false);
     //false = bars, true = times

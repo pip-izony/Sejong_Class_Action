@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 
 import styles from './Sign.module.css';
-import { signIn } from '../components/Auth.js';
 
 const Sign_in = () => {
     const [clicked, setClicked] = useState(false);
