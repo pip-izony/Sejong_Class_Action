@@ -51,6 +51,7 @@ const Sign_up = () => {
             .then(() => {
                 console.log('회원가입 완료');
             })
+            Profile({studentEmail, password, name});
         }
     };
 
