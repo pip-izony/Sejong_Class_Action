@@ -1,14 +1,15 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import styles from './Sign.module.css';
-import Profile from './Profile'
+import { Link } from 'react-router-dom';
+import Validation from './Validation'
 
 const Sign_up = () => {
     const [clicked, setClicked] = useState(false);
-    //false = bars, true = times
 
     const [studentEmail, setStudentEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
+    var authenticated = false;
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -39,19 +40,26 @@ const Sign_up = () => {
             alert(errors.password);
         }
         else {
-            <Route path="/sign_up/validation" component={Profile} />
-            //window.location.href = './sign_up/validation';
+            authenticated = true;
             setClicked(!clicked);
             
             fetch('http://localhost:8080/mail/send_auth_code', {
                 method: 'POST',
                 headers: { "Content-Type" : "application/json" },
-                body: JSON.stringify(member)
+                body: JSON.stringify({studentEmail, password, name, authenticated})
             })
             .then(() => {
                 console.log('회원가입 완료');
-            })
-            Profile({studentEmail, password, name});
+            });
+            
+            <Link to='./Validation' 
+                state={{
+                    studentEmail: studentEmail,
+                    password: password,
+                    name: name,
+                    authenticated: authenticated 
+                }}
+            />
         }
     };
 
