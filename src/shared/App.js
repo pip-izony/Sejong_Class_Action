@@ -1,6 +1,7 @@
 import React, { Component, useState } from 'react';
 import { Route, Routes, Router } from 'react-router-dom';
 import { Home, About, Sign_in, Sign_up, Validation} from '../pages';
+import Profile from '../pages/Profile';
 
 const App = () => {
   const [user, setUser] = useState(null);
