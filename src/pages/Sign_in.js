@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap";
 //import { loadReCaptcha, ReCaptcha } from "react-recaptcha-v3";
 import axios from "axios";
 import $ from "jquery";
+import {} from "jquery.cookie";
 
 axios.defaults.withCredentials = true;
 const headers = { withCredentials: true };

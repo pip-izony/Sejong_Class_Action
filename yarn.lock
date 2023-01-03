@@ -5856,6 +5856,11 @@
     "import-local" "^3.0.2"
     "jest-cli" "^27.5.1"
 
+"jquery.cookie@^1.4.1":
+  "integrity" "sha512-c/hZOOL+8VSw/FkTVH637gS1/6YzMSCROpTZ2qBYwJ7s7sHajU7uBkSSiE5+GXWwrfCCyO+jsYjUQ7Hs2rIxAA=="
+  "resolved" "https://registry.npmjs.org/jquery.cookie/-/jquery.cookie-1.4.1.tgz"
+  "version" "1.4.1"
+
 "jquery@^3.6.3":
   "integrity" "sha512-bZ5Sy3YzKo9Fyc8wH2iIQK4JImJ6R0GWI9kL1/k7Z91ZBNgkRXE6U0JfHIizZbort8ZunhSI3jw9I6253ahKfg=="
   "resolved" "https://registry.npmjs.org/jquery/-/jquery-3.6.3.tgz"
@@ -7544,7 +7549,7 @@
   "resolved" "https://registry.npmjs.org/react-refresh/-/react-refresh-0.11.0.tgz"
   "version" "0.11.0"
 
-"react-router-dom@^6.3.0":
+"react-router-dom@^6.6.1":
   "integrity" "sha512-u+8BKUtelStKbZD5UcY0NY90WOzktrkJJhyhNg7L0APn9t1qJNLowzrM9CHdpB6+rcPt6qQrlkIXsTvhuXP68g=="
   "resolved" "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.6.1.tgz"
   "version" "6.6.1"
