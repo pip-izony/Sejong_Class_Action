@@ -1,70 +1,93 @@
-import React, {useState} from 'react';
+import React, { Component } from "react";
+import { Form, Button } from "react-bootstrap";
+//import { loadReCaptcha, ReCaptcha } from "react-recaptcha-v3";
+import axios from "axios";
+import $ from "jquery";
 
-import styles from './Sign.module.css';
+axios.defaults.withCredentials = true;
+const headers = { withCredentials: true };
 
-const Sign_in = () => {
-    const [clicked, setClicked] = useState(false);
-    //false = bars, true = times
-    const handleClick = () => {
-        setClicked(!clicked);
+class LoginForm extends Component {
+
+  login = () => {
+    const loginEmail = this.loginEmail.value;
+    const loginPw = this.loginPw.value;
+
+    if (loginEmail === "" || loginEmail === undefined) {
+      alert("이메일 주소를 입력해주세요.");
+      this.loginEmail.focus();
+      return;
+    } 
+    else if (loginPw === "" || loginPw === undefined) {
+      alert("비밀번호를 입력해주세요.");
+      this.loginPw.focus();
+      return;
     }
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [name, setName] = useState('');
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const member = { username, password, name };
-
-        fetch('http://localhost:8080/student/signup', {
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(member)
-        })
-        .then(() => {
-            console.log('로그인 완료');
-        })
-    }
+    const send_param = {
+      headers,
+      email: this.loginEmail.value,
+      password: this.loginPw.value
+    };
+    axios
+      .post("http://localhost:8080/member/login", send_param)
+      //정상 수행
+      .then(returnData => {
+        if (returnData.data.message) {
+          // console.log("login_id:" + returnData.data._id);
+          $.cookie("login_id", returnData.data._id, { expires: 1 });
+          $.cookie("login_email", returnData.data.email, { expires: 1 });
+          alert(returnData.data.message);
+          window.location.reload();
+        } 
+        else {
+          alert(returnData.data.message);
+        }
+      })
+      //에러
+      .catch(err => {
+        console.log(err);
+      });
+  };
+  render() {
+    const formStyle = {
+      margin: 50
+    };
+    const buttonStyle = {
+      marginTop: 10
+    };
 
     return (
-        <div className={styles.content}>
-            <body>
-                <div className={styles.main_content}>
-                    <body>
-                    <h2>로그인</h2>
-                        <form onSubmit={handleSubmit}>
-                            <p>
-                                <label>이메일</label>
-                            </p>
-                            <input 
-                                type="text" 
-                                required
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                            />
-                            <br/>
-                            <p>
-                                <label>비밀번호</label>
-                            </p>
-                            <input 
-                                type="text" 
-                                required
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                            <br/>
-                            <br/>
-                            <br/>
-                            {<button className={styles.button_background}>로그인</button>}
-                        </form>
-                        <br/>
-                        <a href='../sign_up'>회원가입&nbsp;&nbsp;&nbsp;</a>
-                        <a href='../sign_up'>&nbsp;&nbsp;&nbsp;아이디 | 비밀번호</a>
-                    </body>
-                </div>
-            </body>
-        </div>
+      <Form style={formStyle}>
+        <Form.Group controlId="loginForm">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            type="email"
+            maxLength="100"
+            ref={ref => (this.loginEmail = ref)}
+            placeholder="Enter email"
+          />
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            maxLength="20"
+            ref={ref => (this.loginPw = ref)}
+            placeholder="Password"
+          />
+
+          <Button
+            style={buttonStyle}
+            onClick={this.login}
+            variant="primary"
+            type="button"
+            block
+          >
+            로그인
+          </Button>
+        </Form.Group>
+      </Form>
     );
+  }
 }
-export default Sign_in;
+
+export default LoginForm;
