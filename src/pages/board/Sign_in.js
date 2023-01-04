@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
-//import { loadReCaptcha, ReCaptcha } from "react-recaptcha-v3";
+import { loadReCaptcha, ReCaptcha } from "react-recaptcha-v3";
 import axios from "axios";
 import $ from "jquery";
 import {} from "jquery.cookie";
@@ -8,7 +8,16 @@ import {} from "jquery.cookie";
 axios.defaults.withCredentials = true;
 const headers = { withCredentials: true };
 
-class LoginForm extends Component {
+class Sign_in extends Component {
+
+  componentDidMount() {
+    loadReCaptcha("6LfGieAUAAAAAJSOoqXS5VQdT_e5AH8u0n2e1PDb");
+  }
+
+  verifyCallback = recaptchaToken => {
+    // Here you will get the final recaptchaToken!!!
+    console.log(recaptchaToken, "<= your recaptcha token");
+  };
 
   login = () => {
     const loginEmail = this.loginEmail.value;
@@ -75,7 +84,11 @@ class LoginForm extends Component {
             ref={ref => (this.loginPw = ref)}
             placeholder="Password"
           />
-
+          <ReCaptcha
+            sitekey="6LfGieAUAAAAAJSOoqXS5VQdT_e5AH8u0n2e1PDb"
+            action="login"
+            verifyCallback={this.verifyCallback}
+          />
           <Button
             style={buttonStyle}
             onClick={this.login}
@@ -91,4 +104,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+export default Sign_in;

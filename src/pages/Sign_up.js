@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
-//import { loadReCaptcha, ReCaptcha } from "react-recaptcha-v3";
 import axios from "axios";
 import $ from "jquery";
 
 axios.defaults.withCredentials = true;
 const headers = { withCredentials: true };
 
-class LoginForm extends Component {
+class Sign_up extends Component {
+
 
   join = () => {
     const joinEmail = this.joinEmail.value;
@@ -131,4 +131,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+export default Sign_up;

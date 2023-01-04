@@ -8,6 +8,7 @@ axios.defaults.withCredentials = true;
 const headers = { withCredentials: true };
 
 class Header extends Component {
+  
   state = {
     buttonDisplay: "none"
   };

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import LoginForm from "./LoginForm";
+import Sign_in from "./Sign_in";
 import BoardForm from "./BoardForm";
 import BoardWriteForm from "./BoardWriteForm";
 import BoardDetail from "./BoardDetail";
@@ -12,12 +12,12 @@ class Body extends Component {
   render() {
     let resultForm;
     function getResultForm() {
-      // console.log($.cookie("login_id"));
+      console.log($.cookie("login_id"));
       if ($.cookie("login_id")) {
         resultForm = <Route exact path="/" component={BoardForm}></Route>;
         return resultForm;
       } else {
-        resultForm = <Route exact path="/" component={LoginForm}></Route>;
+        resultForm = <Route exact path="/" component={Sign_in}></Route>;
         return resultForm;
       }
     }
