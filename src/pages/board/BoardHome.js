@@ -1,18 +1,15 @@
-import React from "react";
-import {HashRouter} from 'react-router-dom';
+import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Header from "./Header";
+import Body from "./Body";
+import Footer from "./Footer";
 
 const BoardHome = () => {
   return(
     <div>
-      <head>
-        <script src="Header.js"></script>
-        <script src="Body.js"></script>
-        <script src="Footer.js"></script>
-      </head>
-      <body>
-        Hello World!
-      </body>
+      <Header/>
+      <Body/>
+      <Footer/>
     </div>
   );
 }

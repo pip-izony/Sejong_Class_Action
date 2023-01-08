@@ -47,7 +47,7 @@ class Header extends Component {
     return (
       <div>
         <Navbar>
-          <Navbar.Brand href="/">Today I Learned</Navbar.Brand>
+          <Navbar.Brand href="/">Board Platform</Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             {/* <NavLink to="/mypage">
@@ -65,9 +65,11 @@ class Header extends Component {
                 글쓰기
               </Button>
             </NavLink>
-            <Button style={buttonStyle} onClick={this.logout} variant="primary">
-              로그아웃
-            </Button>
+            <NavLink>
+              <Button style={buttonStyle} onClick={this.logout} variant="primary">
+                로그아웃
+              </Button>
+            </NavLink>
           </Navbar.Collapse>
         </Navbar>
         <Image src="./img/main.png" fluid />
