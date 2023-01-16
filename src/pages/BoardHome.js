@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Header from "./Header";
-import Body from "./Body";
-import Footer from "./Footer";
+import Header from "./board/Header";
+import Body from "./board/Body";
+import Footer from "./board/Footer";
+
 
 const BoardHome = () => {
   return(
@@ -14,4 +15,4 @@ const BoardHome = () => {
   );
 }
 
-export default BoardHome
+export default BoardHome;

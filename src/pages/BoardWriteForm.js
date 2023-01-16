@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import {CKEditor} from "ckeditor4-react";
-import { Button, Form} from "react-bootstrap";
+import { CKEditor } from "ckeditor4-react";
+import { Button, Form } from "react-bootstrap";
 import axios from "axios";
 import $ from "jquery";
-import {} from "jquery.cookie";
+import { } from "jquery.cookie";
 axios.defaults.withCredentials = true;
 const headers = { withCredentials: true };
 
@@ -13,15 +13,15 @@ class BoardWriteForm extends Component {
   };
 
   componentDidMount() {
-    if (this.props.location.query !== undefined) {
-      this.boardTitle.value = this.props.location.query.title;
+    if (this.props.location !== undefined) {
+      this.boardTitle.value = this.props.location.title;
     }
   }
 
-  componentWillMount(){
-    if (this.props.location.query !== undefined) {
+  componentWillMount() {
+    if (this.props.location !== undefined) {
       this.setState({
-        data: this.props.location.query.content
+        data: this.props.location.content
       });
     }
   }
@@ -41,12 +41,12 @@ class BoardWriteForm extends Component {
       alert("글 내용을 입력 해주세요.");
       boardContent.focus();
     }
-    
-    if (this.props.location.query !== undefined) {
+
+    if (this.props.location !== undefined) {
       url = "http://localhost:8080/board/update";
       send_param = {
         headers,
-        "_id" : this.props.location.query._id,
+        "_id": this.props.location._id,
         "title": boardTitle,
         "content": boardContent
       };
@@ -54,7 +54,7 @@ class BoardWriteForm extends Component {
       url = "http://localhost:8080/board/write";
       send_param = {
         headers,
-        "_id" : $.cookie("login_id"),
+        "_id": $.cookie("login_id"),
         "title": boardTitle,
         "content": boardContent
       };

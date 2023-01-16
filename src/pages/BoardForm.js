@@ -13,14 +13,14 @@ class BoardRow extends Component {
       <tr>
         <td>
           <NavLink
-            to={{ pathname: "/board/detail", query: { _id: this.props._id } }}
+            to={{ pathname: "/BoardDetail", query: { _id: this.props._id } }}
           >
             {this.props.createdAt.substring(0, 10)}
           </NavLink>
         </td>
         <td>
           <NavLink
-            to={{ pathname: "/board/detail", query: { _id: this.props._id } }}
+            to={{ pathname: "/BoardDetail", query: { _id: this.props._id } }}
           >
             {this.props.title}
           </NavLink>

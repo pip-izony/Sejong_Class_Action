@@ -11,7 +11,7 @@ class BoardDetail extends Component {
   };
 
   componentDidMount() {
-    if (this.props.location.query !== undefined) {
+    if (this.props.location !== undefined) {
       this.getDetail();
     } else {
       window.location.href = "/";
@@ -42,7 +42,7 @@ class BoardDetail extends Component {
   getDetail = () => {
     const send_param = {
       headers,
-      _id: this.props.location.query._id
+      _id: this.props.location._id
     };
     const marginBottom = {
       marginBottom: 5
@@ -77,7 +77,7 @@ class BoardDetail extends Component {
                     query: {
                       title: returnData.data.board[0].title,
                       content: returnData.data.board[0].content,
-                      _id: this.props.location.query._id
+                      _id: this.props.location._id
                     }
                   }}
                 >
@@ -89,7 +89,7 @@ class BoardDetail extends Component {
                   block
                   onClick={this.deleteBoard.bind(
                     null,
-                    this.props.location.query._id
+                    this.props.location._id
                   )}
                 >
                   글 삭제
