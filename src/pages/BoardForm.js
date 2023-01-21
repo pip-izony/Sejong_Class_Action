@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Table } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { Route, Routes,NavLink } from "react-router-dom";
 import axios from "axios";
 import $ from "jquery";
 import {} from "jquery.cookie";
+import BoardDetail from "./BoardDetail";
 axios.defaults.withCredentials = true;
 const headers = { withCredentials: true };
 
@@ -12,16 +13,12 @@ class BoardRow extends Component {
     return (
       <tr>
         <td>
-          <NavLink
-            to={{ pathname: "/BoardDetail", query: { _id: this.props._id } }}
-          >
+          <NavLink to={{ pathname: "/BoardDetail", query: { _id: this.props._id }}} state={{_id: this.props._id, board: []}}>
             {this.props.createdAt.substring(0, 10)}
           </NavLink>
         </td>
         <td>
-          <NavLink
-            to={{ pathname: "/BoardDetail", query: { _id: this.props._id } }}
-          >
+          <NavLink to={{ pathname: "/BoardDetail", query: { _id: this.props._id }}} state={{_id: this.props._id, board: []}}>
             {this.props.title}
           </NavLink>
         </td>

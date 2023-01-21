@@ -11,9 +11,9 @@ const App = (props) => {
         <Route path="/about" element={<About />}/>
         <Route path="/BoardHome" element={<BoardHome />}/>
         <Route path="/BoardWriteForm" element={<BoardWriteForm />}/>
-        <Route path="/BoardDetail" element={<BoardDetail />}/>
+        <Route path="/BoardDetail" element={<BoardDetail/>}/>
         <Route path="/BoardForm" element={<BoardForm />}/>
-        <Route path="/sign_up" element={<Sign_up />}/>
+        <Route path="/SignUp" element={<Sign_up />}/>
       </Routes>
       </div>
     );
