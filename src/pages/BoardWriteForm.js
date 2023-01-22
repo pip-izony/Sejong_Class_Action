@@ -16,7 +16,6 @@ class BoardWriteForm extends Component {
     if (this.props.location !== undefined) {
       this.boardTitle.value = this.props.location.title;
     }
-    console.log(this.props.location)
   }
 
   componentWillMount() {
